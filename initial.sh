@@ -53,3 +53,11 @@ if [ "${OS}" = "ubuntu" ]; then
 elif [ "${OS}" = "rhel" ]; then
     echo "Not integrated"
 fi
+
+# Install further Tools
+if [ "${OS}" = "ubuntu" ]; then
+    sudo apt-get update
+    sudo apt-get install -y make
+elif [ "${OS}" = "rhel" ]; then
+    echo "Not integrated"
+fi
