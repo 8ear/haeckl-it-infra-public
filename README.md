@@ -1,2 +1,2 @@
-# haeckl-it-infra-public
-Haeckl IT Infra Public
+# Haeckl IT Infra Public
+This repository contains the starter shellscript to create a new management host for internal infrastructure.
