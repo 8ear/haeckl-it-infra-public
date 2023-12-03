@@ -70,4 +70,4 @@ fi
 
 # Add SSH-Key
 [ -d /root/.ssh ] || mkdir -p /root/.ssh
-echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAFap7TE8SEu+HpcCmW53/xRalnwIhf0DourNRrWpgss" >> /root/.ssh/authorized_keys
+[ -f /root/.ssh/authorized_keys ] && echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAFap7TE8SEu+HpcCmW53/xRalnwIhf0DourNRrWpgss" >> /root/.ssh/authorized_keys
