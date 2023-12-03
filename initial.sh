@@ -1,6 +1,11 @@
 #/bin/sh
 set -x
 
+#
+# Initial public script on https://github.com/8ear/haeckl-it-infra-public
+#
+
+
 # Check if sudo is available?
 SUDO_AVAILABLE=$(command -v sudo)
 [ -z "$SUDO_AVAILABLE" ] && echo "Script requires sudo, please install first." && exit 1
@@ -34,7 +39,7 @@ fi
 
 
 # Install Docker
-if [ "${OS}" = "ubuntu" ]; then
+if [ -z "$(command -v docker)" ] && [ "${OS}" = "ubuntu" ]; then
     for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
     # Add Docker's official GPG key:
     sudo apt-get update
@@ -61,3 +66,8 @@ if [ "${OS}" = "ubuntu" ]; then
 elif [ "${OS}" = "rhel" ]; then
     echo "Not integrated"
 fi
+
+
+# Add SSH-Key
+[ -d /root/.ssh ] || mkdir -p /root/.ssh
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAFap7TE8SEu+HpcCmW53/xRalnwIhf0DourNRrWpgss" >> /root/.ssh/authorized_keys
