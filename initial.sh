@@ -62,7 +62,7 @@ fi
 # Install further Tools
 if [ "${OS}" = "ubuntu" ]; then
     sudo apt-get update
-    sudo apt-get install -y make
+    sudo apt-get install -y make git-crypt
 elif [ "${OS}" = "rhel" ]; then
     echo "Not integrated"
 fi
