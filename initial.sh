@@ -24,7 +24,8 @@ fi
 
 # Check which OS is?
 # https://stackoverflow.com/questions/2264428/how-to-convert-a-string-to-lower-case-in-bash
-OS="$(grep DISTRIB_ID /etc/lsb-release|cut -d '=' -f 2|tr '[:upper:]' '[:lower:]')"
+[ -f /etc/lsb-release ] && OS="$(grep DISTRIB_ID /etc/lsb-release|cut -d '=' -f 2|tr '[:upper:]' '[:lower:]')"
+[ -z "$OS" ] && OS="$(lsb_release -is| tr '[:upper:]' '[:lower:]')" 
 # For Example = ubuntu
 
 
