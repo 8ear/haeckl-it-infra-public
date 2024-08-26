@@ -76,7 +76,7 @@ fi
 
 # Add mgmt host inventory file
 echo "Add Inventory file for mgmgt-host with correct hostname and user."
-cat <<EOT >> /srv/git/infra/ansible/inventory/inv.mgmt-host.yml
+cat <<EOT > /srv/git/infra/ansible/inventory/inv.mgmt-host.yml
 all:
   mgmt_host:
     vars:
