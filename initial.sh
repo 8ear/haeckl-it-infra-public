@@ -5,7 +5,6 @@ set -x
 # Initial public script on https://github.com/8ear/haeckl-it-infra-public
 #
 
-
 # Check if sudo is available?
 SUDO_AVAILABLE=$(command -v sudo)
 [ -z "$SUDO_AVAILABLE" ] && echo "Script requires sudo, please install first." && exit 1
@@ -65,11 +64,6 @@ if [ "${OS}" = "ubuntu" ]; then
     sudo apt-get update
     sudo apt-get install -y make git-crypt sudo git
 fi
-
-# Setup git
-[ -z "$DOMAIN" ] && echo "Please set first MAIL_DOMAIN env var and continue then. Exit now." && exit 1 
-git config --global user.email support_msmtp-$(hostname -s)@$DOMAIN
-git config --global user.name host-$(hostname -s)
 
 # Add SSH-Key
 [ -d /root/.ssh ] || mkdir -p /root/.ssh
