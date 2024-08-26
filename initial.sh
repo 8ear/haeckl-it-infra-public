@@ -71,7 +71,7 @@ fi
 
 # prepare for Git initialization
 [ -d /srv/git ] || mkdir /srv/git
-[ -z "$GIT_REPO_URL" ] && echo "Please set first GIT_REPO env var to contine. Exit now." && exit 1
+[ -z "$GIT_REPO_URL" ] && echo "Please set first GIT_REPO_URL env var to contine. Exit now." && exit 1
 [ -z "$GIT_REPO_URL" ] && cd /srv/git && git clone $GIT_REPO_URL
 
 # Add mgmt host inventory file
