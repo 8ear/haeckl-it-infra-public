@@ -78,10 +78,10 @@ fi
 echo "Add Inventory file for mgmgt-host with correct hostname and user."
 cat <<EOT >> /srv/git/infra/ansible/inventory/inv.mgmt-host.yml
 all:
-  vars:
-    ansible_user: root
-    ansible_ssh_private_key_file: ssh_keys/haeckl-it-infra-deploy.pem
   mgmt_host:
+    vars:
+      ansible_user: root
+      ansible_ssh_private_key_file: ssh_keys/haeckl-it-infra-deploy.pem
     hosts:
       $(hostname -f):
 EOT
