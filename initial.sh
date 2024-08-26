@@ -1,5 +1,5 @@
 #/bin/sh
-set -x
+set -ex
 
 #
 # Initial public script on https://github.com/8ear/haeckl-it-infra-public
