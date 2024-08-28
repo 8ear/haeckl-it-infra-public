@@ -94,12 +94,13 @@ fi
 
 # prepare for Git initialization
 [ -d /srv/git ] || mkdir /srv/git
-[ -z "$GIT_REPO_URL" ] && echo "Please set first GIT_REPO_URL env var to contine. Exit now." && exit 1
-[ -z "$GIT_REPO_URL" ] && cd /srv/git && git clone $GIT_REPO_URL
+if [ ! -z "$INSTALL_GIT_REPO" ]; then
+	[ -z "$GIT_REPO_URL" ] && echo "Please set first GIT_REPO_URL env var to contine. Exit now." && exit 1
+	[ -z "$GIT_REPO_URL" ] && cd /srv/git && git clone $GIT_REPO_URL
 
-# Add mgmt host inventory file
-echo "Add Inventory file for mgmgt-host with correct hostname and user."
-cat <<EOT > /srv/git/infra/ansible/inventory/inv.mgmt-host.yml
+	# Add mgmt host inventory file
+	echo "Add Inventory file for mgmgt-host with correct hostname and user."
+	cat <<EOT > /srv/git/infra/ansible/inventory/inv.mgmt-host.yml
 all:
   mgmt_host:
     vars:
@@ -108,6 +109,8 @@ all:
     hosts:
       $(hostname -f):
 EOT
+
+fi
 
 echo "All tasks done, docker is installed and git repo is cloned to /srv/git. Exit now."
 exit 0
